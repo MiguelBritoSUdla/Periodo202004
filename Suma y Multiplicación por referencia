@@ -1,0 +1,74 @@
+/******************************************************************************
+
+Crear un prgrama que permita realizar las operaciones de suma y resta de dos números 
+usando paso por valor y referencia.
+Crear un programa que permita contar los elementos de una serie de números pares.
+
+*******************************************************************************/
+#include <stdio.h>
+#include <math.h>
+void funcionValor(int*,int*);
+void valor (int,int);
+void ref (int*,int*);
+int serie (int*);
+
+int main()
+{
+    int num1=0,num2=0,num3=0,num4=0,num5=0;
+    printf("Ingrese un número: ");
+    scanf("%i",&num1);
+    while (num1<0)
+    {
+        num1=0;
+        printf("Ingrese un número positivo: ");
+        scanf("%i",&num1);
+    }
+    printf("Ingrese otro número: ");
+    scanf("%i",&num2);
+    while (num2<0)
+    {
+        num2=0;
+        printf("Ingrese un número positivo: ");
+        scanf("%i",&num2);
+    }
+    system("clear");
+    valor (num1,num2);
+    ref (&num1,&num2);
+    printf("\nNumero1=%i y Numero2=%i",num1,num2);
+    funcionValor(&num1,&num2);
+    printf("\nNumero1=%i y Numero2=%i",num1,num2);
+    printf("\nIngrese la cantidad de números de la serie: ");
+    scanf("%i",&num3);
+    serie(&num3);
+}
+
+void valor (int x, int y)
+{
+    int resta=0,suma=0;
+    suma=x+y;
+    resta=x-y;
+    printf("(Por Valor) Suma=%i y resta=%i",suma,resta);
+}
+
+void ref (int *a, int *b)
+{
+    int aux=*a;
+    *a=(*a)+(*b);
+    *b=(aux)-(*b);
+}
+int serie (int *a)
+{
+    int cont=0,ser=0;
+    while (cont<*a)
+    {
+        ser=ser+2;
+        cont++;
+        printf("\n%i",ser);
+    }
+}
+
+void funcionValor (int *x, int *y)
+{
+    *x=(*x)*(*x);
+    *y=sqrt(*y);
+}
