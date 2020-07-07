@@ -1,0 +1,90 @@
+/******************************************************************************
+
+Crear un programa que ingrese las n notas de un estudiante y determine su prome-
+dio. Indique si aprueba o reprueba.
+
+*******************************************************************************/
+#include <stdio.h>
+#include <stdlib.h>
+#define limite 20
+void ingreso (int,float[]);
+float impresion (int,float[]);
+void main()
+{
+    int cnum=0,y=0,op=0;
+    float notas[limite];
+    while (y!=3)
+    {
+        printf("¡Bienvenido!");
+        printf("\nIngrese:\n1.Programa de notas\n2.Segundo programa\n3.Salir\n");
+        scanf("%i",&op);
+        switch(op)
+        {
+            case 1:
+            printf("Ingrese la cantidad de notas: ");
+            scanf("%i",&cnum);
+            while (cnum<=0)
+            {
+                cnum=0;
+                printf("Ingrese un número válido: ");
+                scanf("%i",&cnum);
+            }
+            ingreso(cnum,notas);
+            printf("El promedio es %.2f\n",impresion(cnum,notas));
+            printf("\n");
+            break;
+            
+            case 2:
+            
+            break;
+            
+            case 3:
+                system("clear");
+                printf("¡Gracias por usar!");
+                exit(0);
+            break;
+            default:
+                printf("Ingrese una opción correcta: ");
+            break;
+        }
+        
+    }
+}
+
+void ingreso (int x, float notas[x])
+{
+    int cont=0;
+    char nombre [10];
+    getchar();
+    printf("Ingrese su nombre: ");
+    gets(nombre);
+    while (cont<x)
+    {
+        printf("Ingrese sus calificaciones una por una: ");
+        scanf("%f",&notas[cont]);
+        while (notas[cont]<=0)
+        {
+            printf("Ingrese una calificación válida: ");
+            scanf("%f",&notas[cont]);
+        }
+        cont++;
+    }
+    system("clear");
+  
+}
+
+float impresion (int x,float notas[x])
+{
+    int cont=0;
+    float prom=0,suma=0;
+    char nombre[10];
+    printf("Libreta de Calificaciones de %s\n",nombre);
+    while (cont<x)
+    {
+        printf("Calficación [%i]=%.1f\n",cont+1,notas[cont]);
+        suma=suma+notas[cont];
+        cont++;
+    }
+    prom=suma/cont;
+    return prom;
+}
