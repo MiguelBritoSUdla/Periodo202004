@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include <math.h>
+
+void main()
+{
+    float a,b,c,resultado1,resultado2=0;////Datos de entrada: a,b y c Definición de variables: a,b,c,resultado1 y resultado2
+    printf("Ingrese a ");  ////Mostrar en pantalla "Ingrese a"
+    scanf("%f",&a); //////Escanear a
+    printf("Ingrese b "); ////Mostrar en pantalla "Ingrese b"
+    scanf("%f",&b); //////Escanear b
+    printf("Ingrese c "); ///Mostrar en pantalla "Ingrese c"
+    scanf("%f",&c); //////Escanear c
+    resultado1=(-b+sqrt(pow(b,2)-4*a*c))/(2*a);   ////Se define la fórmula para la suma
+    resultado2=(-b-sqrt(pow(b,2)-4*a*c))/(2*a);   ////Se define la fórmula para la resta
+    printf("El resultado sumando es %f\n",resultado1);
+    printf("El resultado restando es %f\n",resultado2); ////Datos de salida: resultado1 y resultado2
+
+}
