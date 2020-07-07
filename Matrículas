@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+int main()
+{
+    int matricula,cont=0,division,savemayor,savemenor=0;
+    float calificaciones,total,prom,prommayor=0,prommenor=0;
+    printf("Ingrese su matrícula: ");
+    scanf("%i",&matricula);
+    while(matricula>0)
+    {
+    while (cont<=4)
+    {
+        cont++;
+        printf("Ingrese sus calificaciones: ");
+        scanf("%f",&calificaciones);
+        total=total+calificaciones;
+    }
+    division=5;
+    prom=total/division;
+    printf("El promedio de %i es de %.2f",matricula,prom);
+    printf("\n");
+    cont=0;
+    calificaciones=0;
+    total=0;
+    if (prom>prommayor)
+    {
+        prommayor=prom;
+        savemayor=matricula;
+    }
+    if (prommayor<prom)
+    {
+        prommenor=prom;
+        savemenor=matricula;
+    }
+    printf("Ingrese su matrícula: ");
+    scanf("%i",&matricula);
+    }
+    printf("El promedio mayor es de %.2f, la matricula es %i",prommayor,savemayor);
+    printf("\n");
+    printf("El promedio menor es de %.2f, la matricula es %i",prommenor,savemenor);
+}
+
