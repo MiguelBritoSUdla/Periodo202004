@@ -1,0 +1,188 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define tam 50
+void ingresodatos (int, float[]);
+void impresiondatos (int, float []);
+float promedio (int, float []);
+void escribirarchivo (int, float []);
+int main()
+{
+    FILE *archivo;
+    archivo=fopen("Cosechas.txt","w");
+    int w=0,cant=0,a=0;
+    float cosechas[tam];
+    while (w!=1)
+    {
+        printf("Bienvenido al programa de cosechas anuales.\n");
+        printf("1.Ingreso Datos\n2.Impresión Datos\n3.Promedio\n4.Escribir en el archivo\n5.Salir\n");
+        scanf("%i",&a);
+        while (a<1 && a>12)
+        {
+            printf("Ingrese un número válido: ");
+            scanf("%i",&a);
+        }
+        switch (a)
+        {
+            case 1:
+            printf("Ingrese la cantidad de meses: ");
+            scanf("%i",&cant);
+            while (cant<0)
+            {
+                cant=0;
+                printf("Ingrese una cantidad de meses válida: ");
+                scanf("%i",&cant);
+            }
+            ingresodatos (cant,cosechas);
+            break;
+            case 2:
+            impresiondatos (cant,cosechas);
+            break;
+            case 3:
+            printf("\nEl promedio es igual a %.2f\n",promedio(cant,cosechas));
+            break;
+            case 4:
+            escribirarchivo (cant,cosechas);
+            break;
+            case 5:
+            exit(0);
+            break;
+            default:
+                printf("Ingrese una opción válida: ");
+            break;
+        }
+        
+    }
+
+}
+
+void ingresodatos (int cant, float cosechas[cant])
+{
+    int cont=0;
+    while (cont<cant)
+    {
+        printf("Ingrese la medida en toneladas %i:",cont+1);
+        scanf("%f",&cosechas[cont]);
+        cont++;
+    }
+    system("clear");
+    
+}
+
+void impresiondatos (int cant, float cosechas[cant])
+{
+    system("clear");
+    int cont=0,cont2=0,cont3=0;
+    float suma=0,prom=0,x=0;
+    while (cont<cant)
+    {
+        printf("Mes de cosecha %i: %.2f toneladas\n",cont+1,cosechas[cont]);
+        cont++;
+    }
+    cont=0;
+    while (cont<cant)
+    {
+        suma=suma+cosechas[cont];
+        cont++;
+    }
+    prom=suma/cont;
+    cont=0;
+    while (cont<cant)
+    {
+        if(prom<cosechas[cont])
+        {
+            printf("El mes %i se obtuvo una cosecha mayor al promedio.\n",cont+1);
+            cont2++;
+        }
+        cont++;
+        
+    }
+    printf("En total, tuvieron %i meses donde la cosecha fue mayor al promedio.\n",cont2);
+    cont=0;
+    while (cont<cant)
+    {
+        if(cosechas[cont+1]>cosechas[cont])
+        {
+           x=cosechas[cont+1];
+        }
+        cont++;
+    }
+    printf("La mayor cosecha fue de %.2f\n",x);
+    cont=0;
+    while (cont<cant)
+    {
+        if(cosechas[cont+1]<cosechas[cont])
+        {
+           cont3++;
+        }
+        cont++;
+    }
+    printf("La mayor cosecha fue en el mes %i\n",cont3);
+}
+
+float promedio (int cant, float cosechas[cant])
+{
+    int cont=0;
+    float prom=0,suma=0;
+    while (cont<cant)
+    {
+        suma=suma+cosechas[cont];
+        cont++;
+    }
+    prom=suma/cont;
+    return prom;
+}
+
+void escribirarchivo (int cant, float cosechas[cant])
+{
+    FILE *archivo;
+    archivo=fopen("Cosechas.txt","w");
+    system("clear");
+    int cont=0,cont2=0,cont3=0;
+    float suma=0,prom=0,x=0;
+    while (cont<cant)
+    {
+        fprintf(archivo,"Mes de cosecha %i: %.2f toneladas\n",cont+1,cosechas[cont]);
+        cont++;
+    }
+    cont=0;
+    while (cont<cant)
+    {
+        suma=suma+cosechas[cont];
+        cont++;
+    }
+    prom=suma/cont;
+    fprintf(archivo,"El promedio es de %.2f\n",prom);
+    cont=0;
+    while (cont<cant)
+    {
+        if(cosechas[cont]>prom)
+        {
+            fprintf(archivo,"El %i mes se obtuvo una cosecha mayor al promedio.\n",cont+1);
+            cont2++;
+        }
+        cont++;
+    }
+    fprintf(archivo,"En total, tuvieron %i meses donde la cosecha fue mayor al promedio.\n",cont2);
+    cont=0;
+    while (cont<cant)
+    {
+        if(cosechas[cont+1]>cosechas[cont])
+        {
+           x=cosechas[cont+1];
+        }
+        cont++;
+    }
+    cont=0;
+    while (cont<cant)
+    {
+        if(cosechas[cont+1]>cosechas[cont])
+        {
+           cont3++;
+        }
+        cont++;
+    }
+    fprintf(archivo,"La mayor cosecha fue de %.2f en el mes %i",x,cont3+1);
+    fclose(archivo);
+}
+
+
