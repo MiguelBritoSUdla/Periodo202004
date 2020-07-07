@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+struct datos
+{
+    int num;
+    char nombre[25];
+};
+
+int main()
+{
+    FILE *archivo;
+    struct datos x[25];
+    int cont=0;
+    while (cont<5)
+    {
+        printf("Ingrese el nombre %i: ",cont+1);
+        fgets(x[cont].nombre,25,stdin);
+        x[cont].num=cont+1;
+        cont++;
+    }
+    archivo=fopen("x.db","w");
+    if (archivo)
+    {
+        fwrite(x,sizeof(struct datos),25,archivo);
+        fclose(archivo);
+    }
+    
+}
