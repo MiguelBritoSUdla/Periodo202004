@@ -1,0 +1,63 @@
+/******************************************************************************
+Crear un programa que permita ingresar por teclado n frases, imprima en pantalla
+y escribe la información en el archivo.
+*******************************************************************************/
+#include <stdio.h>
+#define tam 100 
+
+void ingresoFrase(int,char[][tam]);
+void imprimeFrase(int,char[][tam]);
+
+void main()
+{
+    
+    int nfrases,op;
+    char frase[tam][tam];
+    while(op!=3)
+    {
+        printf("1.Ingreso Frase\n2.Impresion Frase\n3.Salir\n");
+        printf("Escoja la opcion:");
+        scanf("%d",&op);
+        switch(op)
+        {
+            case 1:
+                    do
+                    {
+                    printf("Ingrese el numero de frases :");
+                    scanf("%d",&nfrases);
+                    }while(nfrases<0);
+                    ingresoFrase(nfrases,frase);
+    
+            break;
+            
+            case 2:
+                    imprimeFrase(nfrases,frase);
+            break;
+        }
+    }
+}
+
+void ingresoFrase(int nFrase,char frase[][tam])
+{
+    int cont=1;
+    getchar();
+    while(cont<=nFrase)
+    {
+        printf("Ingrese la frase:");
+        gets(frase[cont]);
+        cont++;
+    }
+}
+void imprimeFrase(int nFrase,char frase[][tam]) 
+{
+    FILE *archivo;
+    archivo=fopen("frase.txt","a");
+    int cont=1;
+    while(cont<=nFrase)
+    {
+        printf("La frase es %s\n",frase[cont]);
+        fprintf(archivo,"La frase es %s\n",frase[cont]);
+        cont++;
+    }
+    fclose(archivo);
+}
