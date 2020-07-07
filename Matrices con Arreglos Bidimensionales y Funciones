@@ -1,0 +1,112 @@
+/******************************************************************************
+
+Crear un programa que permita inicializar los elementos de una matriz e imprima 
+en pantalla.
+
+*******************************************************************************/
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define tam 50
+
+void ingresoDatos(int,float[tam], float[][tam], char[][tam]);
+void imprimeDatos(int,float[tam], float[][tam],char[][tam]);
+
+void main()
+{
+    int op,cantVend;
+    char nombre[tam][tam];
+    float precios[tam][tam],cantVent[tam];
+    while(op!=6)
+    {
+        printf("1.Ingreso Datos\n2.Impresion Ventas\n3.Salir\n");
+        printf("Escoja la opcion:");
+        scanf("%d",&op);
+        switch(op)
+        {
+            case 1:
+                    do
+                    {
+                        printf("Ingrese la cantidad de vendedores:");
+                        scanf("%d",&cantVend); 
+                    }while(cantVend<0);
+                ingresoDatos(cantVend,cantVent,precios,nombre);
+                    
+            break;
+            case 2:
+                imprimeDatos(cantVend,cantVent,precios,nombre);  
+            break;
+            case 3:
+                    exit(0);
+            break;
+            default:
+                    printf("Opcion invalida.\n");
+            break;
+            
+        }
+    }
+}
+
+void ingresoDatos(int cantVend,float cantVent[tam], float precios[][tam],char nombre[][tam])
+{
+    int i,j,k;
+    for(i=0;i<cantVend;i++)
+    {
+        printf("VENDEDOR #%d\n",i+1);
+        getchar();
+        printf("Ingrese el nombre:");
+        gets(nombre[i]);
+        printf("Ingrese la cantidad de ventas:");
+        scanf("%f",&cantVent[i]);
+        while (cantVent[i]<0)
+        {
+            printf("Ingrese una venta válida: ");
+            scanf("%f",&cantVent[i]);
+        }
+        for(j=0;j<cantVent[i];j++)
+        {
+            printf("Ingrese el valor de la venta:");
+            scanf("%f",&precios[i][j]);
+            while(precios[i][j]<0)
+            {
+                printf("Ingrese una venta positiva:");
+                scanf("%f",&precios[i][j]);
+            }
+        }
+    }
+    system("clear");
+}
+
+void imprimeDatos(int cantVend,float cantVent[tam], float precios[][tam],char nombre[][tam])
+{
+    system("clear");
+    FILE *archivo;
+    archivo=fopen("Ventas.txt","w");
+    int i,j;
+    float k=0,cont=0,prom=0;
+    for(i=0;i<cantVend;i++)
+    {
+        printf("VENDEDOR #%d\n",i+1);
+        fprintf(archivo,"VENDEDOR #%d\n",i+1);
+        printf("Nombre: %s",nombre[i]);
+        fprintf(archivo,"Nombre: %s\n",nombre[i]);
+        for(j=0;j<cantVent[i];j++)
+        {
+            printf("Valor de la venta: %.1f\n",precios[i][j]);
+            fprintf(archivo,"Valor de la venta: %.1f\n",precios[i][j]);
+            k=k+precios[i][j];
+            cont=cont+1;
+        }
+        prom=k/cont;
+        printf("Promedio: %.1f",prom);
+        fprintf(archivo,"Promedio: %.1f",prom);
+    }
+    fclose(archivo);
+}
+
+
+
+
+
+
+
