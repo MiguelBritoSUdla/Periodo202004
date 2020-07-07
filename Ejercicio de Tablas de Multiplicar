@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+int main()
+{
+
+ int lim,tabla,mult=0,cont=1;
+    printf("Ingrese la tabla a multiplicar:");
+    scanf("%d",&tabla);
+    printf("Ingrese el limite:");
+    scanf("%d",&lim);
+    while(cont<=lim)
+    {
+            mult=tabla*cont;
+            printf("%dX%d=%d\n",tabla,cont,mult);
+            cont++;
+    }
+
+}
