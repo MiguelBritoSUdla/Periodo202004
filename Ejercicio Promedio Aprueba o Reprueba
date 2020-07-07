@@ -1,0 +1,54 @@
+/******************************************************************************
+
+Crear un programa que permita ingresar la cantidad de notas para n estudiantes,
+determine su promedio e indique si aprueba o reprueba.
+
+*******************************************************************************/
+#include <stdio.h>
+
+int main()
+{
+    
+    float notas,suma,prom;
+    int cont=1,cnotas,nest,j;
+    char nombre[10];
+    printf("Ingrese la cantidad de estudiantes: ");
+    scanf("%i",&nest);
+    printf("Ingrese la cantidad de notas: ");
+    scanf("%i",&cnotas);
+    while (nest>=cont)
+    {
+        getchar();
+        printf("\nIngrese su nombre: ");
+        gets(nombre);
+        j=1;
+        suma=0;
+        while(j<=cnotas)
+        {
+            printf("Ingrese su nota: ");
+            scanf("%f",&notas);
+            while (notas<0 || notas>10)
+            {
+                printf("Ingrese una nota válida: ");
+                scanf("%f",&notas);
+            }
+        suma=suma+notas;
+        j++;
+        }
+        cont++;
+        prom=suma/cnotas;
+        printf("%s tiene un promedio de %.2f\n",nombre,prom);
+        if (prom>6)
+        {
+            printf("Felicitaciones, aprueba la materia");
+        }
+        else 
+        {
+            printf("Lo sentimos, no aprueba la materia");
+        }
+    }
+}
+
+
+
+
