@@ -1,0 +1,37 @@
+#include <stdio.h>
+void perfecto (int);
+int main()
+{
+    int num1=0;
+    printf("Ingrese un número: ");
+    scanf("%i",&num1);
+    while (num1<=0)
+    {
+        num1=0;
+        printf("Ingrese un número válido: ");
+        scanf("%i",&num1);
+    }
+    perfecto(num1);
+}
+
+void perfecto (int y)
+{
+    int i=1,suma=0,cont=0;
+    while (i<=(y/2))
+    {
+        if (y%i==0)
+        {
+            suma=suma+i;
+            cont=cont+1,
+        }
+    i++;
+    }
+    if (suma==y)
+    {
+        printf("Su número es perfecto.");
+    }
+    else
+    {
+        printf("Su número no es perfecto.");
+    }
+}
