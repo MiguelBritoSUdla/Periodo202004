@@ -1,0 +1,112 @@
+/******************************************************************************
+
+Datos de Entrada:
+
+nclientes,nproductos,producto,cantidad,precio,nombres,opcion.
+
+Proceso:
+
+Definición de variables: clientes,producto,cantidad,precio,nombres,suma,multiplicacion,cont,cont2,impuesto.
+Pantalla "Menú".
+Pantalla"1. Facturación".
+Pantalla "2. Salir"
+Leer opción
+Opción 1:
+Pantalla:"Ingrese el número de clientes"
+Leer nclientes.
+mientras contador<nclientes:
+    -Pantalla:"Ingrese el número de productos".
+    -Leer nproductos.
+    -Pantalla:"Ingrese su nombre".
+    -Leer nombre.
+    Mientras contador2<nproductos:
+        -Pantalla: "Ingrese el nombre del producto: "
+        -Leer producto.
+        -Pantalla: "Ingrese el precio del producto: "
+        -Leer precio del producto.
+        -Pantalla: "Ingrese la cantidad de (nombre del producto) que va a comprar: "
+        -Leer cantidad.
+        -Multiplicación=Precio*cantidad.
+        -Suma=suma+multiplicación.
+        -Pantalla "(Nombre) debe pagar (suma)"
+        -impuesto=(12*suma/100).
+        -Pantalla "IVA=(impuesto)"
+        suma=0
+        cantidad=0
+        limpiar cadena de nombres de los productos.
+Opcion 2:
+terminar programa.
+
+*******************************************************************************/
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    
+    int opcion,nclientes,cont=1,nproductos,cont2=1;//def. variables
+    float precio=0,cantidad=0,mult,impuesto,suma=0;
+    char nombre[10],nombreproductos[20];
+    printf("Menú");
+    printf("\n");
+    printf("1 para facturación.");//Indicaciones.
+    printf("\n");
+    printf("2 para salir.");
+    scanf("%i",&opcion);//Lectura
+    while (opcion>0)//Sentencia while
+    {
+    switch (opcion)///Switch
+    {
+    case 1://Serie de indicaciones a seguir si la opción es 1.
+    
+    printf("Ingrese el número de clientes: ");//Orden
+    scanf("%i",&nclientes);//lectura nclientes
+    while (cont<=nclientes)//segunda sentencia while
+    {
+        printf("cliente %i",cont);//Solicitud
+        printf("\n");//Salto.
+        cont++;//Aumento.
+        printf("Ingrese su nombre: ");//Solicitud
+        scanf("%s",nombre);//Lectura
+        printf("Ingrese el número de productos: ");//Solicitud
+        scanf("%i",&nproductos);//  Lectura nproductos
+        while (cont2<=nproductos)//Tercera sentencia while
+        {
+            
+            printf("Ingrese el nombre del producto que va a comprar: ");//Solicitud
+            scanf("%s",nombreproductos);//  Lectura
+            printf("Ingrese la cantidad que va a comprar : ");//Solicitud
+            scanf("%f",&cantidad);//  Lectura
+            printf("Ingrese el precio del producto que va a comprar: ");//Solicitud
+            scanf("%f",&precio);//  Lectura
+            mult=cantidad*precio;//Definicion mult
+            suma=suma+mult;//Definicion suma
+            cont2++;//Aumento
+        }
+    printf("%s tiene que pagar %.2f",nombre,suma);//Pantalla
+    impuesto=(suma*12/100);//definicion
+    printf("\n");//Salto
+    printf("IVA=%.2f",impuesto);//Pantalla impuesto.
+    printf("\n");
+    nproductos=0;//Limpieza de variables.
+    gets(nombreproductos);
+    precio=0;
+    suma=0;
+    mult=0;
+    cont2=1;
+    }
+    printf("1 para facturación.");//Menú para determinar si el usuario queire salir
+    printf("\n");
+    printf("2 para salir.");
+    scanf("%i",&opcion);
+    
+    break;//Fin opción 1
+    
+    case 2:
+    
+    exit(0);//Cerrar progrma.
+    
+    break;
+    }
+}
+}
