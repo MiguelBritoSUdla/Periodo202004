@@ -1,0 +1,37 @@
+#include <stdio.h>
+
+int main()
+{
+    char nombre[25],apellido[20],color[15],universidad[25],aspiracion[25],respuesta[20];
+    int edad;
+    printf("Ingrese su nombre: ");
+    scanf("%s",nombre);
+    printf("Ingrese su apellido: ");
+    scanf("%s",apellido);
+    printf("Ingrese su color favorito: ");
+    scanf("%s",color);
+    printf("Ingrese en que universidad estudia: ");
+    scanf("%s",universidad);
+    printf("¿Qué puesto de trabajo espera tener? ");
+    scanf("%s",aspiracion);
+    printf("¿Le gustan las películas? ");
+    scanf("%s",respuesta);
+    printf("Ingrese su edad: ");
+    scanf("%i",&edad);
+    printf("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n");
+    printf("Biografía\n");
+    printf("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n");
+    printf("Nombre: %s\n",nombre);
+    printf("Apellido: %s\n",apellido);
+    printf("Edad: %i\n",edad);
+    printf("Color favorito: %s\n",color);
+    printf("Universidad: %s\n",universidad);
+    printf("Aspira ser: %s\n",aspiracion);
+    printf("Tiene un gusto por las películas: %s\n",respuesta);
+    printf("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n");
+
+}
+
+
+
+
