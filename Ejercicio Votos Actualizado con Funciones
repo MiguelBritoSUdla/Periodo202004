@@ -1,0 +1,139 @@
+/******************************************************************************
+
+*******************************************************************************/
+/*
+opcion 1
+cuadrado y raiz
+
+opcion 2
+mostrar los n numeros pares usando referencias
+*/
+
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+#define limit 30
+void archivodatos  (int, int[], int, int, int, int, int);
+void impresiondatos (int, int[], int, int, int, int, int);//definición
+void main()
+{
+  int votos[limit],votos1,votos2,votos3=0,votos4=0,votos5=0,y=1,w=1,a=0,x=0;
+      printf("¡Bienvenido al programa de votos!");//Mensaje
+      while (w!=0)
+      {
+        printf("\nIngrese 1 para el ingreso de datos o 2 para la impresión.\nIngrese 3 para salir: ");
+        scanf("%i",&w);
+        switch (w)
+        {
+            case 1:
+                while (y!=0)//Sentencia while para la lectura de votos.
+                {
+                    printf("\nIngrese su voto: ");
+                    scanf("%i",&votos[x]);//Lectura
+                    while (votos[x]>5 ||votos[x]<0)//Validación
+                    {
+                        printf("\nIngrese un voto válido: ");
+                        scanf("%i",&votos[x]);
+                    }
+                    if (votos[x]==1)//Condición
+                    {
+                        votos1=votos1+1;//Aumento
+                        x++;//Aumento
+                    }
+                    else if (votos[x]==2)//Condición
+                    {
+                        votos2=votos2+1;//Aumento
+                        x++;//Aumento
+                    }
+                    else if (votos[x]==3)//Condición
+                    {
+                        votos3=votos3+1;//Aumento
+                        x++;//Aumento
+                    }
+                    else if (votos[x]==4)//Condición
+                    {
+                        votos4=votos4+1;;//Aumento
+                        x++;//Aumento
+                    }
+                    else if (votos[x]==5)//Condición
+                    {
+                        votos5=votos5+1;//Aumento
+                        x++;//Aumento
+                    }
+                    else if (votos[x]==0)//Condición
+                    {
+                        y=0;
+                        archivodatos(x,votos,votos1,votos2,votos3,votos4,votos5);
+                    }
+                }
+            break;
+            case 2:
+                impresiondatos (x,votos,votos1,votos2,votos3,votos4,votos5);
+            break;
+            case 3:
+                w=0;
+                exit(0);
+            break;
+            default:
+                printf("Ingrese un número válido");
+            break;
+        }
+    }
+}
+
+void impresiondatos (int x , int votos[x], int votos1, int votos2, int votos3, int votos4, int votos5)
+{
+    float pvotos1=0, pvotos2=0, pvotos3=0, pvotos4=0, pvotos5=0;//definición
+    int cont=0;//definición
+    pvotos1=(float)(votos1*100)/x;//definición
+    pvotos2=(float)(votos2*100)/x;//definición
+    pvotos3=(float)(votos3*100)/x;//definición
+    pvotos4=(float)(votos4*100)/x;//definición
+    pvotos5=(float)(votos5*100)/x;//definición
+    printf("\nCantidad de votos: %i",x);//Cantidad de votos en pantalla
+    while (cont<x)
+    {
+        printf("\n\nVoto[%i]=%i\n",cont+1,votos[cont]);//Votos en orden
+        cont++;
+    }
+    printf("\n");
+    printf("El candidato 1 tiene %i votos con un procentaje de %.1f\n",votos1,pvotos1);
+    printf("El candidato 2 tiene %i votos con un procentaje de %.1f\n",votos2,pvotos2);
+    printf("El candidato 3 tiene %i votos con un procentaje de %.1f\n",votos3,pvotos3);
+    printf("El candidato 4 tiene %i votos con un procentaje de %.1f\n",votos4,pvotos4);
+    printf("El candidato 5 tiene %i votos con un procentaje de %.1f\n",votos5,pvotos5);
+
+}
+
+void archivodatos (int x , int votos[x], int votos1, int votos2, int votos3, int votos4, int votos5)
+{
+    FILE *archivo;
+    archivo=fopen("Votos.txt","w");
+    float pvotos1=0, pvotos2=0, pvotos3=0, pvotos4=0, pvotos5=0;//definición
+    int cont=0;//definición
+    pvotos1=(float)(votos1*100)/x;//definición
+    pvotos2=(float)(votos2*100)/x;//definición
+    pvotos3=(float)(votos3*100)/x;//definición
+    pvotos4=(float)(votos4*100)/x;//definición
+    pvotos5=(float)(votos5*100)/x;//definición
+    fprintf(archivo,"\nCantidad de votos: %i",x);//Cantidad de votos en pantalla
+    while (cont<x)
+    {
+        fprintf(archivo,"\n\nVoto[%i]=%i\n",cont+1,votos[cont]);//Votos en orden
+        cont++;
+    }
+    fprintf(archivo,"El candidato 1 tiene %i votos con un procentaje de %.1f\n",votos1,pvotos1);
+    fprintf(archivo,"El candidato 2 tiene %i votos con un procentaje de %.1f\n",votos2,pvotos2);
+    fprintf(archivo,"El candidato 3 tiene %i votos con un procentaje de %.1f\n",votos3,pvotos3);
+    fprintf(archivo,"El candidato 4 tiene %i votos con un procentaje de %.1f\n",votos4,pvotos4);
+    fprintf(archivo,"El candidato 5 tiene %i votos con un procentaje de %.1f\n",votos5,pvotos5);
+    fclose(archivo);
+    
+}
+
+
+
+
+
+
+
