@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+int main()
+{
+    printf("\n");
+    int tabla=1,limite=1,mult;
+    while (tabla<6)
+    {
+    while (limite<=11)
+    {
+        limite++;
+        mult=tabla*limite;
+        printf("%i x %i = %i",tabla,limite,mult);
+        printf("\n");
+    }
+    tabla++;
+    limite=1;
+    printf("\n");
+    }
+}
