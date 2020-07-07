@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+int main()
+{
+
+    int num,limite,cont=1,resultado;
+    printf("Ingrese un número: ");
+    scanf("%i",&num);
+    printf("Ingrese el límite: ");
+    scanf("%i",&limite);
+    while (limite>cont)
+    {
+        cont++;
+        resultado=num*cont;
+        printf("%i x %i = %i",num,cont,resultado);
+        printf("\n");
+    }
+
+}
