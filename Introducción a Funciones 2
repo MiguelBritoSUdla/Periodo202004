@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <math.h>
+int maximo(int, int);
+
+int main()
+{
+    
+   int x,y;
+   printf("Ingrese el valor de x: ");
+   scanf("%i",&x);
+   printf("Ingrese el valor de y: ");
+   scanf("%i",&y);
+
+   maximo(x,y);
+   
+   return 0;
+    
+}
+
+int maximo (int a, int b) 
+{
+    if(a>b) {
+        printf("%i es mayor a %i",a,b);
+    }
+    else if (b>a) {
+        printf("%i es mayor a %i",b,a);
+    }
+    return 0;
+}
