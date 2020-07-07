@@ -1,0 +1,42 @@
+///Crear un programa que permita realizar la suma de 2 numeros, usando funciones
+
+///1.Definicion de librerías
+///2.Definicion de prototipo de funciones
+///3.Llamada a la función en funcion main()
+///4.Implementación de la función
+
+///4!=1*2*3*4
+
+///*******************************************************************************/
+#include <stdio.h>
+int sumaNumeros(int,int);
+int factorial(int);
+
+
+void main()
+{
+    int numero1,numero2;
+    printf("Ingrese el numero 1 y numero 2:");
+    scanf("%d %d",&numero1,&numero2 );
+    printf("La suma es %d\n",sumaNumeros(numero1,numero2));
+    printf("El factorial de %d es %d\n",numero1,factorial(numero1));
+}
+
+int sumaNumeros(int num1,int num2)
+{
+   int resul=0;
+   resul=num1+num2;
+   return resul;
+}
+
+int factorial(int num)
+{
+    int fact=1,cont=1;
+    while(cont<=num)
+    {
+        fact=fact*cont;
+        cont++;
+    }
+return fact;    
+}
+
