@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+int
+main ()
+{
+
+  int numero, potencia, cont = 1, num2, cont2;
+  printf ("Ingrese un número: ");
+  scanf ("%i", &numero);
+  printf ("Ingrese la potencia a la que lo quiere elevar: ");
+  scanf ("%i", &potencia);
+  cont2=numero;
+  while (potencia > cont)
+    {
+      cont++;
+      numero=numero*cont2;
+    }
+ printf("%i",numero);
+}
