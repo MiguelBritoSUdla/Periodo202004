@@ -1,0 +1,90 @@
+/******************************************************************************
+
+Una empresa clasifica a sus empleados en dos grupos, los del grupo 1 son aquellos
+que laboran dentro de la misma y desean darles un aumento de sueldo siguiendo el
+siguiente criterio: si el empleado trabajó más de 40 horas, su sueldo será incrementado
+en $50.00, si el empleado es mujer o es mayor de 25 años y tiene en la empresa más
+de 30 años su sueldo se incrementará en $800.00 y si no cumple con estas
+condiciones solo se incrementa en $100.00 (este último es independiente de las horas
+trabajadas), Para los empleados del grupo 2 (los que aspiran a ingresar a la
+empresa)si es mayor de 18 años y tiene más de 85 puntos en una prueba presentada
+entonces será contratado. Elaborar un programa para determinar el sueldo de una
+persona e indicar si será o no contratado. Debe especificar los datos de entrada,
+proceso y salida.
+
+Datos de entrada: El sueldo, grupo, género conjuntamente con edad y tiempo con la empresa y las horas de trabajo.
+
+Proceso: 
+
+Se ingresa el sueldo.
+Se ingresa el grupo.
+
+Grupo 1:
+Si es del grupo 1 y ha trabajado más de 40 horas, se le da un incremento de 50 dólares.
+Si es del grupo 1 y es mujer o mayor de 25 años y ha trabajado más de 50 anos con la empresa, se le da un incremento de 800 dólares.
+Si es del grupo 1 pero no cumple con ninguno de los requisitos, se le da un incremento de 10o dólares.
+
+Grupo 2:
+Si es del grupo 2, es de mayor de 18 años y tiene más de 85 puntos, significa que fue contratado.
+Si es del grupo 2 pero no cumple con los requisitos, significa que no fue contratado.
+
+Datos de Salida:
+
+El nuevo sueldo y el status de contratación.
+*******************************************************************************/
+#include <stdio.h>
+
+int main()
+{
+    int grupo,cuarenta,sueldo,mujer,sueldonuevo,mayor=0;
+    printf("Ingrese el valor de sus sueldo" ); ///Datos de entrada: Sueldo original y grupo
+    scanf("%i",&sueldo);
+    printf("Ingrese su grupo (1 o 2) ");
+    scanf("%i",&grupo);
+    if (grupo==1) ///A partir de este punto, se empiezan a evaluar las condiciones especificadas para el grupo 1 como se puede observar desde la línea 17 hasta la 25.
+        { 
+            printf("¿Trabaja más de 40 horas? (1 para si y 0 para no) ");
+            scanf("%i",&cuarenta);
+            if (cuarenta==1)
+                {
+                    sueldonuevo=sueldo+50;
+                    printf("Su nuevo sueldo es de %i\n",sueldonuevo); //En las líneas 51, 61 y 66 se da la orden para que se muestre el nuevo sueldo en pantalla.
+                }
+            else 
+                {
+                    printf("¿Es mujer o mayor de 25 años y ha trabajado más de 50 anos con la empresa? ");
+                    printf("\n(1 para si y 0 para no) ");
+                    scanf("%i",&mujer);
+                   if (mujer==1);
+                    {
+                        sueldonuevo=sueldo+800;
+                        printf("Su nuevo sueldo es de %i\n",sueldonuevo);
+                    }
+                    else
+                    {
+                        sueldonuevo=sueldo+100;
+                        printf("Su nuevo sueldo es de %i\n",sueldonuevo);
+                    }
+                
+                }
+                
+            }
+            
+        }
+    else ////Si es del grupo 2, se evaluan las condiciones para ese grupo como se puede ver en las líneas 28-29.
+        {
+            printf("¿Es mayor de 18 años y tiene más de 85 puntos en una prueba presentada? " );
+            printf("\n(1 para si y 0 para no)" );
+            scanf("%i",mayor);
+            if (mayor==1)
+                {
+                    printf("Contratado"); ///Se explica que fue contratado.
+                }
+            else 
+                {
+                    printf("Lo sentimos, no ha sido contratado"); //Se explica que no fue contratado.
+                }
+        }
+
+
+
