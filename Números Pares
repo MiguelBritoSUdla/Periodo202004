@@ -1,0 +1,31 @@
+/******************************************************************************
+
+Crear un progrma que permita generar la serie de los n primeros números pares.
+
+Datos de entrada: -
+Desarrollo:
+
+-Se definen la variables (cont, par).
+-Mientras el contador sea menor o igual a 10, se sumará 2 a la variable número.
+-Una vez que ya no se cumpla la condición, el programa terminará.
+
+Datos de salida:
+
+-Números pares.
+
+*******************************************************************************/
+#include <stdio.h>
+
+int main()
+{
+    int cont=1,par=0,numero;
+    printf("Ingrese el numero de numeros pares:\n ");
+    scanf("%i",&numero);
+    printf("Numeros pares.\n");
+    while (cont<=numero)
+    {
+        par=par+2;
+        cont=cont+1;
+        printf("\n\n%i",par);
+    }
+}
