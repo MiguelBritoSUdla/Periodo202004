@@ -1,0 +1,28 @@
+/******************************************************************************
+REALIZAR UN PROGRAMA QUE DETERMINE EL ÁREA DEL CÍRCULO
+
+Datos de entrada: 
+
+    - (Flotante) Radio=0
+    - (Flotante) Área=0
+    - (Flotante) pi=3.1416
+Proceso:
+
+    -Mostrar en pantalla "Ingrese el radio".
+    -Leer el valor del radio.
+    -Área=pi*radio*radio
+    -Mostrar en pantalla "El área es" +Área
+*******************************************************************************/
+#include <stdio.h>//DECLARACIÓN DE LIBRERÍAS//
+
+void main()//Declaración de la función principal//
+{//Inicio del programa//
+    
+    float radio,area=0,pi=3.1416;
+    printf("Ingrese el radio: ");
+    scanf ("%f",&radio);
+    area=pi*radio*radio;
+    printf("EL área es %.1f", area);
+    
+}//Fin del programa//
+
